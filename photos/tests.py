@@ -75,3 +75,8 @@ class ImageTestClass(TestCase):
         image=Image.objects.all()
         self.assertTrue(len(image)>0)
 
+    def tearDown(self):
+        Location.objects.all().delete()
+        Category.objects.all().delete()
+        Image.objects.all().delete()
+
