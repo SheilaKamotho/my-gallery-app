@@ -76,6 +76,9 @@ class ImageTestClass(TestCase):
         self.assertTrue(len(image)>0)
 
     def tearDown(self):
+        '''
+        Test for cleaning up stuff from the setUp method
+        '''
         Location.objects.all().delete()
         Category.objects.all().delete()
         Image.objects.all().delete()
