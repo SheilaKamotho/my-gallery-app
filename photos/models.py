@@ -30,6 +30,7 @@ class Image(models.Model):
     """
     Class that generates new instance of images
     """
+    photo = models.ImageField(upload_to = 'images/',null=True)
     image_name=models.CharField(max_length=30)
     image_description=models.TextField()
     image_location = models.ForeignKey(Location,on_delete=models.CASCADE, null=True)
@@ -41,4 +42,10 @@ class Image(models.Model):
     
     def save_image(self):
         self.save()
+
+    @classmethod
+    def search_by_image_category(cls,search_term):
+        photos = cls.objects.filter(image_category__icontains=search_term)
+        return photos
+
 
