@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Image(model.Models):
+class Image(models.Model):
     """
     Class that generates new instance of images
     """
