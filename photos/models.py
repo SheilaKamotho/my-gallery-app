@@ -1,5 +1,4 @@
 from django.db import models
-import datetime as dt
 
 # Create your models here.
 class Location(models.Model):
@@ -38,7 +37,8 @@ class Image(models.Model):
     post_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.title 
+        return self.image_name
     
     def save_image(self):
         self.save()
+
