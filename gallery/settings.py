@@ -82,6 +82,9 @@ DATABASES = {
         'NAME': 'gallery',
         'USER': 'sheila',
     'PASSWORD':'kamo2211',
+    'TEST': {
+            'NAME': 'photos',
+        },
     }
 }
 
