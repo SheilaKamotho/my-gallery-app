@@ -50,7 +50,7 @@ class ImageTestClass(TestCase):
 
     def setUp(self):
         '''
-        Set up method to run before each test cases.
+        Set up method to run before each test cases and save.
         '''
         self.new_location=Location(location='Nairobi')
         self.new_location.save_location()
@@ -65,13 +65,13 @@ class ImageTestClass(TestCase):
         '''
         Test case to test if the object is initialized properly
         '''
-        self.assertTrue(isinstance(self.new_category,Category))
+        self.assertTrue(isinstance(self.new_image,Image))
 
     def test_save_method(self):
         '''
         Test case to test the save functionality
         '''
-        self.new_category.save_category()
-        category=Category.objects.all()
-        self.assertTrue(len(category)>0)
+        self.new_image.save()
+        image=Image.objects.all()
+        self.assertTrue(len(image)>0)
 
