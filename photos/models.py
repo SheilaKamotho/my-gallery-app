@@ -19,7 +19,7 @@ class Category(models.Model):
     Class that generates new instances of location
     """
     category=models.CharField(max_length=30)
-    
+
     def __str__(self):
         return self.category
 
@@ -36,4 +36,9 @@ class Image(models.Model):
     image_location = models.ForeignKey(Location,on_delete=models.CASCADE, null=True)
     image_category = models.ForeignKey(Category,on_delete=models.CASCADE, null=True)
     post_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title 
     
+    def save_image(self):
+        self.save()

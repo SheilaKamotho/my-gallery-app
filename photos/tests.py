@@ -77,7 +77,7 @@ class ImageTestClass(TestCase):
 
     def tearDown(self):
         '''
-        Test for cleaning up stuff from the setUp method
+        Cleaning up stuff from the setUp method
         '''
         Location.objects.all().delete()
         Category.objects.all().delete()
