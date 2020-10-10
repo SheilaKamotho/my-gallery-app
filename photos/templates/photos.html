@@ -5,16 +5,21 @@
 <div class="container">
 
     <!-- Looping through images  -->
-    {% for images in image %}
+    {% for photos_item in photos %}
   
     <div class="row">
       
       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <h2 class="text-center"> {{ image.image_name }} </h2>
+        <h2 class="text-center"> {{ photos_item.image_name }} </h2>
+        <h6 class="text-center"> {{ photos_item.image_description}} </h6>
+        <h6 class="text-center"> {{ photos_item.image_location}} </h6>
+        <h6 class="text-center"> {{ photos_item.image_category}} </h6>
+        <h6 class="text-center"> {{ photos_item.post_date}} </h6>
+        
       </div>
-      !--Display images  -->
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <img src="{{photo_item.photo_image.url}}" class="img-responsive" alt="Image">
+      <!--Display images  -->
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <img src="{{photos_item.photo.url}}" class="img-responsive" alt="Image">
       </div>
   
     </div>

@@ -4,7 +4,8 @@ from .models import Image
 
 # Create your views here.
 def photos(request):
-    return render(request, 'photos.html')
+    photos=Image.save_image()
+    return render(request, 'photos.html',{"photos":photos})
 
 def search_results(request):
 
