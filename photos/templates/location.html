@@ -1,0 +1,7 @@
+{%extends 'base.html'%}
+{% block content %}
+{{block.super}}
+{%for images in image %}
+<h1>{{images.location}}</h1>
+{%end for%}
+{%end block%}

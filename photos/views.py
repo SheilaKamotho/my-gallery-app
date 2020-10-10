@@ -7,6 +7,21 @@ def photos(request):
     photos=Image.save_image()
     return render(request, 'photos.html',{"photos":photos})
 
+# def location(request,location_id):
+#     try:
+#         get_location_id=location.objects.get(pk=location_id)
+#         location=image.filter_by_location(get_location_id)
+#         message=f'{get_location_id}'
+#         return render(request,'location.html',{"message":message,"location":location})
+#     except Image.DoesNotExist:
+#         Http404('Image does not exist')
+    
+#     return render(request, 'location.html',{"message":message,"location":location})
+
+        
+    
+    
+
 def search_results(request):
 
     if 'image' in request.GET and request.GET["image"]:
