@@ -1,45 +1,40 @@
 {%extends 'base.html'%}
 {% block content %}
 {{block.super}}
-<div class="container">
-  <div class="row">
-    <!-- Looping through photos   -->
-    {% for photos_item in photos %}
+  <div class="container">
+    <div class="row">
+      {% for photos_item in photos %}
       <div class="col-md-3">
-        <a id="link" type="button" style="background-color: rgb(243, 225, 243);" data-toggle="modal" data-target="#exampleModalLong{{photos_item.id}}">
+        <a id="link" type="button" style="background-color: mistyrose;" data-toggle="modal" data-target="#exampleModalLong{{photos_item.id}}">
           <img style="width: 300px;height: 300px;" src="{{photos_item.photo.url}}" class="img-responsive" alt="Image">
         </a>
+        <p class="text-center"><strong style="color: purple;">{{ photos_item.image_location }}</strong></p>
       </div>
       <div class="modal fade" id="exampleModalLong{{photos_item.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle"><img style="width:500px;", src="{{photos_item.photo.url}}" class="img-responsive" alt="Image"></h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <h2 class="modal-title" id="exampleModalLongTitle" style="color:purple;">{{ photos_item.image_name}}</h2>
+              <button type="button" class="close" style="color: purple;" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-                  <h2 class="text-center"> {{ photos_item.image_name}} </h2>
-                  <h3 class="text-center"> {{ photos_item.image_location }} </h3>
-                  <p class="text-center"> {{ photos_item.image_description }} </p>
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+              <img style="width: 600px;height: 300px;" src="{{photos_item.photo.url}}" class="img-responsive" alt="Image">
+              <h5 class="" style="color: purple;">{{ photos_item.image_description }} </h5>
+              <p class="" style="color: brown;">Category: {{ photos_item.image_category }} </p>
+              <p class="" style="color: brown;">Post Date: {{ photos_item.post_date}} </p>
+              <p class="" style="color: brown;">Location: {{ photos_item.image_location }} </p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal"style="color: purple;">Close</button>
+           </div>
           </div>
         </div>
       </div>
-      <!-- displaying photos images -->
       {% empty %}
       <div class="row">
         <h4 class="text-center">Gallery is Empty</h4>
       </div>
       {% endfor %}
-      </div>
-    
+    </div>
   </div>
-</div>
-  
 {% endblock %}

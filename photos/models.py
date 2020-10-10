@@ -35,6 +35,7 @@ class Image(models.Model):
     image_description=models.TextField()
     image_location = models.ForeignKey(Location,on_delete=models.CASCADE, null=True)
     image_category = models.ForeignKey(Category,on_delete=models.CASCADE, null=True)
+    category1 = models.CharField(max_length=30)
     post_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -55,7 +56,7 @@ class Image(models.Model):
 
     @classmethod
     def search_by_image_category(cls,search_term):
-        photos = cls.objects.filter(image_category__icontains=search_term)
+        photos = cls.objects.filter(category1__icontains=search_term)
         return photos
 
 
