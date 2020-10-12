@@ -97,17 +97,30 @@ class ImageTestClass(TestCase):
         self.assertTrue(isinstance(self.new_image, Image))
 
     def test_image_update(self):
-        pass
+       self.image.save_image()
+       self.image=Image.objects.filter(id==1).update() 
+       self.updated_image=Image.objects.get(id==1)
+       self.assertTrue(self.updated_image.img,'photos')
+
 
     def test_image_delete(self):
-        pass
+        self.image.save_image()
+        self.searched_image = Image.objects.get(id==1)
+        self.searched_image.delete_image()
+        self.assertTrue(len(Image.objects.all()) == 0)
 
     def test_search_image_category(self):
-        pass
+        self.image.save_image()
+        self.category= Category(name='nature')
+        self.category.save_category()
+        self.searched_images=Image.search_by_category('nature')
+        self.assertTrue(len(self.searched_images) > 0)
 
 
     def test_get_image_by_id(self):
-        pass
+        self.image.save_image()
+        self.image = Image.objects.get(pk==1)
+        self.assertTrue(self.image==1)
 
     def tearDown(self):
         '''

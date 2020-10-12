@@ -26,7 +26,7 @@
               <p class="" style="color: brown;">Post Date: {{ photos_item.post_date}} </p>
               <p class="" style="color: brown;">Location: {{ photos_item.image_location }} </p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal"style="color: purple;">Close</button>
-      
+              <a href="{{photos_item.photo.url}}"download="{{ photos_item.image_name}}" class="btn btn-secondary" style="float:right; color:purple;">Download Image</a>
            </div>
           </div>
         </div>

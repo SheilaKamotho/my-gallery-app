@@ -21,8 +21,6 @@ class Location(models.Model):
     def __str__(self):
         return self.location
 
-    class Meta:
-        db_table = 'location'
 
 class Category(models.Model):
     """
@@ -55,8 +53,8 @@ class Image(models.Model):
     photo = models.ImageField(upload_to = 'images/',null=True)
     image_name=models.CharField(max_length=30)
     image_description=models.TextField()
-    image_location = models.ForeignKey(Location,on_delete=models.CASCADE)
-    image_category = models.ForeignKey(Category,on_delete=models.CASCADE)
+    image_location = models.ForeignKey(Location,on_delete=models.CASCADE, null=True)
+    image_category = models.ForeignKey(Category,on_delete=models.CASCADE, null=True)
     category1 = models.CharField(max_length=30)
     post_date = models.DateTimeField(auto_now_add=True)
     
