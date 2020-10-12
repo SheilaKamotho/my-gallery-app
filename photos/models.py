@@ -7,11 +7,22 @@ class Location(models.Model):
     """
     location=models.CharField(max_length=30)
 
+    
+    @classmethod
+    def save_location(self):
+        self.save()
+
+    def delete_location(self):
+        self.delete()
+
+    def update_location(self):
+        self.update()
+
     def __str__(self):
         return self.location
 
-    def save_location(self):
-        self.save()
+    class Meta:
+        db_table = 'location'
 
 class Category(models.Model):
     """
@@ -19,13 +30,24 @@ class Category(models.Model):
     """
     category=models.CharField(max_length=30)
 
-    def __str__(self):
-        return self.category
-
+    @classmethod
     def save_category(self):
         self.save()
 
+    def delete_category(self):
+        self.delete()
 
+    def update_category(self):
+        self.update()
+
+
+    def __str__(self):
+        return self.category
+
+    class Meta:
+        db_table = 'category'
+
+    
 class Image(models.Model):
     """
     Class that generates new instance of images
@@ -33,8 +55,8 @@ class Image(models.Model):
     photo = models.ImageField(upload_to = 'images/',null=True)
     image_name=models.CharField(max_length=30)
     image_description=models.TextField()
-    image_location = models.ForeignKey(Location,on_delete=models.CASCADE, null=True)
-    image_category = models.ForeignKey(Category,on_delete=models.CASCADE, null=True)
+    image_location = models.ForeignKey(Location,on_delete=models.CASCADE)
+    image_category = models.ForeignKey(Category,on_delete=models.CASCADE)
     category1 = models.CharField(max_length=30)
     post_date = models.DateTimeField(auto_now_add=True)
 
@@ -59,4 +81,16 @@ class Image(models.Model):
         photos = cls.objects.filter(category1__icontains=search_term)
         return photos
 
+    @classmethod
+    def update_image(self, image_name=image_name, imae_category=None):
+        self.image_name = image_name if image_name else self.image_name
+        self.category1 = category1 if category1 else self.category1
+        self.save()
+    
+    @classmethod
+    def get_image_by_id(cls, id):
+        return cls.objects.get(pk=id)
+
+    def delete_image(self):
+        self.delete()
 
