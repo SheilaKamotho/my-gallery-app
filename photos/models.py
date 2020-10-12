@@ -59,9 +59,6 @@ class Image(models.Model):
     image_category = models.ForeignKey(Category,on_delete=models.CASCADE)
     category1 = models.CharField(max_length=30)
     post_date = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.image_name
     
     def save_image(self):
         self.save()
@@ -93,4 +90,7 @@ class Image(models.Model):
 
     def delete_image(self):
         self.delete()
+
+    def __str__(self):
+        return self.image_name
 
